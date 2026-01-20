@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>MediaPipe Samples - Coreline Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&amp;family=Noto+Sans+KR:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FFD700", // Industrial Yellow
+                        "bg-base": "#FFFFFF", // Pure white
+                        "surface": "#FFFFFF",
+                        "ink": "#000000", // Deep black
+                        "ink-light": "#333333",
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        body: ['"Noto Sans KR"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0px", // Sharp corners for brutalist feel
+                        'pill': '9999px',
+                        'lg': '8px',
+                        'md': '6px',
+                    },
+                    borderWidth: {
+                        '2': '2px',
+                        '3': '3px',
+                        '4': '4px',
+                    },
+                    boxShadow: {
+                        'neo': '6px 6px 0px 0px rgba(0,0,0,1)',
+                        'neo-sm': '4px 4px 0px 0px rgba(0,0,0,1)',
+                        'neo-hover': '8px 8px 0px 0px rgba(0,0,0,1)',
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        .bg-dot-grid {
+            background-image: radial-gradient(#E5E7EB 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .btn-translate {
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .btn-translate:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #000;
+        }
+        .btn-translate:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0px 0px #000;
+        }::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #ffffff;
+            border-left: 2px solid #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #000;
+            border: 2px solid #ffffff;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FFD700;
+        }
+    </style>
+</head>
+<body class="bg-bg-base text-ink font-body antialiased bg-dot-grid min-h-screen flex flex-col">
+<div class="bg-black text-white text-xs font-bold py-2 px-4 border-b-2 border-black flex justify-between items-center sticky top-0 z-50">
+<div class="flex gap-4 items-center">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="tracking-wider font-sans">CORELINE // MEDIAPIPE</span>
+</div>
+<div class="hidden md:flex gap-6 tracking-widest uppercase text-[10px] font-sans">
+<span>System: Stable</span>
+<span>Build: v2.4.1</span>
+</div>
+</div>
+<div class="max-w-[1200px] mx-auto p-6 md:p-12 w-full flex-grow">
+<header class="mb-12">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 bg-primary border-2 border-black flex items-center justify-center shadow-neo-sm">
+<span class="material-symbols-outlined text-3xl text-black">auto_awesome</span>
+</div>
+<h1 class="font-sans font-black text-4xl md:text-5xl tracking-tight text-black">
+                    MediaPipe Samples
+                </h1>
+</div>
+<div class="h-4 w-32 bg-primary border-2 border-black -mt-2 ml-16 transform skew-x-12 shadow-neo-sm"></div>
+</header>
+<section class="mb-10">
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-500 group-focus-within:text-black transition-colors">search</span>
+</div>
+<input class="block w-full pl-12 pr-4 py-4 bg-white border-2 border-black text-lg font-bold placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-black focus:shadow-neo transition-all shadow-neo-sm" placeholder="Search samples..." type="text"/>
+</div>
+</section>
+<section class="mb-8 overflow-x-auto pb-4">
+<div class="flex gap-4 min-w-max">
+<button class="px-6 py-2 bg-black text-white border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">grid_view</span>
+                    All
+                </button>
+<button class="px-6 py-2 bg-white text-black border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm hover:bg-yellow-50 btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">visibility</span>
+                    Vision
+                </button>
+<button class="px-6 py-2 bg-white text-black border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm hover:bg-yellow-50 btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">music_note</span>
+                    Audio
+                </button>
+<button class="px-6 py-2 bg-white text-black border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm hover:bg-yellow-50 btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">text_fields</span>
+                    Text
+                </button>
+<button class="px-6 py-2 bg-white text-black border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm hover:bg-yellow-50 btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">smart_toy</span>
+                    GenAI
+                </button>
+<button class="px-6 py-2 bg-white text-black border-2 border-black font-sans font-bold text-sm uppercase tracking-wide shadow-neo-sm hover:bg-yellow-50 btn-translate flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">settings</span>
+                    Custom
+                </button>
+</div>
+</section>
+<div class="mb-6 font-sans font-bold text-sm border-b-2 border-black inline-block pb-1">
+            17 SAMPLES AVAILABLE
+        </div>
+<main class="space-y-6">
+<article class="bg-white border-2 border-black shadow-neo hover:shadow-neo-hover transition-all duration-200 p-6 md:p-8 relative group cursor-pointer">
+<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0">
+<div class="w-16 h-16 bg-primary border-2 border-black flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">search</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-sans font-black text-2xl">Object Detection</h2>
+<span class="bg-blue-100 text-blue-800 border border-black text-xs px-2 py-0.5 font-bold uppercase tracking-wider">Vision</span>
+</div>
+<p class="text-gray-600 mb-6 font-medium leading-relaxed max-w-3xl">
+                            Detects more than 80 classes of objects in images and videos in real-time. Based on the COCO dataset, it can recognize people, animals, vehicles, and more.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-green-600 text-sm">android</span>
+                                Android
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-gray-800 text-sm">phone_iphone</span>
+                                iOS
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-blue-500 text-sm">language</span>
+                                Web
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-yellow-600 text-sm">code</span>
+                                Python
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-red-500 text-sm">developer_board</span>
+                                Raspberry Pi
+                            </div>
+</div>
+</div>
+</div>
+</article>
+<article class="bg-white border-2 border-black shadow-neo hover:shadow-neo-hover transition-all duration-200 p-6 md:p-8 relative group cursor-pointer">
+<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0">
+<div class="w-16 h-16 bg-primary border-2 border-black flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">person</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-sans font-black text-2xl">Face Detection</h2>
+<span class="bg-blue-100 text-blue-800 border border-black text-xs px-2 py-0.5 font-bold uppercase tracking-wider">Vision</span>
+</div>
+<p class="text-gray-600 mb-6 font-medium leading-relaxed max-w-3xl">
+                            Detect faces in real-time and track 6 core landmarks (eyes, nose, mouth, ears). Provides high speed and high accuracy detection.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-green-600 text-sm">android</span>
+                                Android
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-gray-800 text-sm">phone_iphone</span>
+                                iOS
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-blue-500 text-sm">language</span>
+                                Web
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-yellow-600 text-sm">code</span>
+                                Python
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-red-500 text-sm">developer_board</span>
+                                Raspberry Pi
+                            </div>
+</div>
+</div>
+</div>
+</article>
+<article class="bg-white border-2 border-black shadow-neo hover:shadow-neo-hover transition-all duration-200 p-6 md:p-8 relative group cursor-pointer">
+<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0">
+<div class="w-16 h-16 bg-primary border-2 border-black flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">face</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-sans font-black text-2xl">Face Landmarker</h2>
+<span class="bg-blue-100 text-blue-800 border border-black text-xs px-2 py-0.5 font-bold uppercase tracking-wider">Vision</span>
+</div>
+<p class="text-gray-600 mb-6 font-medium leading-relaxed max-w-3xl">
+                            Tracks 468 detailed landmarks on a face. Can be used for facial expression analysis, AR filters, avatar control, and more.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-green-600 text-sm">android</span>
+                                Android
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-gray-800 text-sm">phone_iphone</span>
+                                iOS
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-blue-500 text-sm">language</span>
+                                Web
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-yellow-600 text-sm">code</span>
+                                Python
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-red-500 text-sm">developer_board</span>
+                                Raspberry Pi
+                            </div>
+</div>
+</div>
+</div>
+</article>
+<article class="bg-white border-2 border-black shadow-neo hover:shadow-neo-hover transition-all duration-200 p-6 md:p-8 relative group cursor-pointer">
+<div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-3xl">arrow_forward</span>
+</div>
+<div class="flex flex-col md:flex-row gap-6">
+<div class="flex-shrink-0">
+<div class="w-16 h-16 bg-primary border-2 border-black flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">pan_tool</span>
+</div>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-3 mb-2">
+<h2 class="font-sans font-black text-2xl">Hand Landmarker</h2>
+<span class="bg-blue-100 text-blue-800 border border-black text-xs px-2 py-0.5 font-bold uppercase tracking-wider">Vision</span>
+</div>
+<p class="text-gray-600 mb-6 font-medium leading-relaxed max-w-3xl">
+                            Detects 21 3D landmarks on a hand in real-time. Supports multi-hand tracking and gesture recognition capabilities.
+                        </p>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-green-600 text-sm">android</span>
+                                Android
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-gray-800 text-sm">phone_iphone</span>
+                                iOS
+                            </div>
+<div class="flex items-center gap-1 px-3 py-1 bg-white border border-black rounded-full text-xs font-bold hover:bg-gray-50">
+<span class="material-symbols-outlined text-blue-500 text-sm">language</span>
+                                Web
+                            </div>
+</div>
+</div>
+</div>
+</article>
+</main>
+</div>
+<footer class="bg-white border-t-4 border-black text-black py-12">
+<div class="max-w-[1200px] mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-black flex items-center justify-center text-primary font-black text-lg">C</div>
+<h2 class="font-black italic text-xl font-sans">CORELINE AI</h2>
+</div>
+<div class="text-xs font-mono font-bold uppercase tracking-widest text-gray-500">
+                Design System: MediaPipe V2.1
+            </div>
+</div>
+</footer>
+
+</body></html>
