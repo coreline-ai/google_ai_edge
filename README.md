@@ -2,8 +2,6 @@
 
 ![Version](https://img.shields.io/badge/Version-v1.0.0-blueviolet) ![Status](https://img.shields.io/badge/Status-Active-success) ![License](https://img.shields.io/badge/License-Apache_2.0-blue)
 
-![MediaPipe Logo](https://mediapipe.dev/images/logo_horizontal.png)
-
 이 저장소는 공식 MediaPipe 샘플과 이를 쉽게 탐색하고 실행할 수 있는 **Flutter 런처 앱**을 제공합니다.
 
 ## 🚀 Flutter 런처 앱
